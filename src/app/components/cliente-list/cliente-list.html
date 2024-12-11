@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>    
+    <ion-title >Clientes</ion-title>  
+   
+    <ion-buttons>
+      <ion-button (click)="addCliente()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Añadir
+      </ion-button>
+    </ion-buttons>   
+ 
+    <ion-buttons slot="end">
+      <ion-button (click)="goToPlatos()">
+        <ion-icon name="fast-food-outline"></ion-icon>
+        Ver Platos
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Nombre</strong></ion-col>
+      <ion-col><strong>Suscripcion</strong></ion-col>
+      <ion-col><strong>Email</strong></ion-col>
+      <ion-col><strong>Telefono</strong></ion-col>
+      <ion-col><strong>Fecha de Registro</strong></ion-col>
+      <ion-col><strong>Acciones</strong></ion-col>
+    </ion-row>
+    <ion-row id="client-row" (click)="showPedidos()" *ngFor="let cliente of clientes">
+      <ion-col>{{ cliente.nombre }}</ion-col>
+      <ion-col>{{ cliente.suscripcion }}</ion-col>
+      <ion-col>{{ cliente.email }}</ion-col>
+      <ion-col>{{ cliente.telefono}}</ion-col>
+      <ion-col>{{ cliente.fechaRegistro | date: 'yyyy-MM-dd'}}</ion-col>
+      <ion-col>
+        <ion-button size="small" (click)="editCliente(cliente)"
+          >Editar
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          size="small"
+          color="danger"
+          (click)="deleteCliente(cliente.idCliente!)"
+          >Eliminar
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { ClienteList } from './components/cliente-list/cliente-list';
+import { PlatoListComponent } from './components/plato-list/plato-list.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: 'clientes', component: ClienteList },
+  { path: 'platos', component: PlatoListComponent }, // Ruta para lista de platos
+  { path: '', redirectTo: '/clientes', pathMatch: 'full' }, // Redirección inicial
+  { path: '**', redirectTo: '/clientes', pathMatch: 'full' }
+
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

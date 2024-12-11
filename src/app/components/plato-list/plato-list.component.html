@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Platos</ion-title>
+    <ion-buttons>
+      <ion-button (click)="addPlato()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Añadir
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="goToClientes()">
+        <ion-icon name="accessibility-outline"></ion-icon>
+        Clientes
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Nombre</strong></ion-col>
+      <ion-col><strong>Descripción</strong></ion-col>
+      <ion-col><strong>Precio</strong></ion-col>
+      <ion-col><strong>Rotación</strong></ion-col>
+      <ion-col><strong>Acciones</strong></ion-col>
+    </ion-row>
+    <ion-row id="plato-row"  *ngFor="let plato of platos">
+      <ion-col>{{ plato.nombre }}</ion-col>
+      <ion-col>{{ plato.descripcion }}</ion-col>
+      <ion-col>{{ plato.precio | currency }}</ion-col>
+      <ion-col>{{ plato.rotacion }}</ion-col>
+      <ion-col>
+        <ion-button size="small" (click)="editPlato(plato)"
+          >Editar
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button size="small" color="danger" (click)="deletePlato(plato.id!)"
+          >Eliminar
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

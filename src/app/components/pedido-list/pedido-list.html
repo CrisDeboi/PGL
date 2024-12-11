@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pedidos</ion-title>
+
+    <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>ID</strong></ion-col>
+      <ion-col><strong>Coste Total</strong></ion-col>
+      <ion-col><strong>Direccion</strong></ion-col>
+      <ion-col><strong>Metodo de pago</strong></ion-col>
+    </ion-row>
+    <ion-row id="pedido-row" *ngFor="let pedido of pedidos">
+      <ion-col>{{ pedido.idPedido }}</ion-col>
+      <ion-col>{{ pedido.coste }}</ion-col>
+      <ion-col>{{ pedido.direccion }}</ion-col>
+      <ion-col>{{ pedido.metodoPago}}</ion-col>
+      <ion-col>
+        <ion-button size="small" 
+          >Editar
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          size="small"
+          color="danger"
+          
+          >Eliminar
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
