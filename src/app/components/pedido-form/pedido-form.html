@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{ pedido ? 'Editar Pedido' : 'Añadir Pedido' }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form [formGroup]="pedidoForm" (ngSubmit)="savePedido()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Coste</ion-label>
+          <ion-input type="number" formControlName="coste_total"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Direccion</ion-label>
+          <ion-textarea formControlName="direccion"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Metodo de Pago</ion-label>
+          <ion-input formControlName="metodo_pago"></ion-input>
+        </ion-item>            
+      </ion-list>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button type="submit" [disabled]="pedidoForm.invalid">
+              Guardar
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </form>
+  </ion-content>
+  

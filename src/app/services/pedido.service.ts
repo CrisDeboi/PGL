@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export interface Cliente {
+  idCliente: number;
+}
+
 export interface Pedido {
-  idPedido?: number;
-  coste: number;
+  id_pedido?: number;
+  cliente:Cliente,
+  coste_total: number;
   direccion: string;
-  metodoPago:string;
+  metodo_pago:string;
  
 }
 
@@ -26,6 +31,10 @@ export class PedidoService {
 
   getPedido(idPedido: number): Observable<Pedido> {
     return this.http.get<Pedido>(`${this.apiUrl}/${idPedido}`);
+  }
+
+  getPedidosCliente(idCliente: number): Observable<Pedido[]> {
+    return this.http.get<Pedido[]>(`${this.apiUrl}/cliente/${idCliente}`);
   }
 
   addPedido(pedido: Pedido): Observable<Pedido> {

@@ -27,6 +27,14 @@ export class ClienteList implements OnInit {
     this.loadClientes();
   }
 
+  onRowClick(event: Event, cliente: Cliente) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('ion-button')) {
+      this.showPedidos(cliente);
+    }
+  }
+  
+
   loadClientes() {
     this.clienteService.getClientes().subscribe(data => {
       console.log(data);
@@ -37,10 +45,23 @@ export class ClienteList implements OnInit {
   goToPlatos(){    
     this.router.navigate(['/platos'])
   }
+  
 
-  async showPedidos() {
+  async showPedidos(cliente: Cliente) {
     const modal = await this.modalController.create({
-      component: PedidoList
+      component: PedidoList,
+      componentProps: {cliente},
+    });
+    modal.onDidDismiss().then(() => {
+      this.loadClientes();
+    });
+    return await modal.present();
+  }
+
+  async showAllPedidos() {
+    const modal = await this.modalController.create({
+      component: PedidoList, 
+      componentProps: {showAll: true}     
     });
     modal.onDidDismiss().then(() => {
       this.loadClientes();
@@ -70,7 +91,7 @@ export class ClienteList implements OnInit {
   }
 
   async deleteCliente(idCliente: number) {
-    console.log('Eliminando cliente con idCliente:', idCliente);  // Agrega un log para depuración
+    console.log('Eliminando cliente con idCliente:', idCliente);  
     const alert = await this.alertController.create({
       header: 'Confirmar',
       message: '¿Estás seguro de que deseas eliminar este cliente?',

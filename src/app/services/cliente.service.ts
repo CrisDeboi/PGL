@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Pedido } from './pedido.service';
 
 export interface Cliente {
-  idCliente?: number;
+  idCliente: number;
   nombre: string;
   suscripcion: string;
   email:string;
   contrasena:string;
   telefono:string;
   fechaRegistro:Date;  
+  pedidos: Pedido[],
 }
 
 @Injectable({

@@ -3,10 +3,17 @@
     <ion-title>Pedidos</ion-title>
 
     <ion-buttons slot="end">
-        <ion-button (click)="dismiss()">
-          <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-button (click)="addPedido(cliente)">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Añadir
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -19,23 +26,11 @@
       <ion-col><strong>Metodo de pago</strong></ion-col>
     </ion-row>
     <ion-row id="pedido-row" *ngFor="let pedido of pedidos">
-      <ion-col>{{ pedido.idPedido }}</ion-col>
-      <ion-col>{{ pedido.coste }}</ion-col>
+      <ion-col>{{ pedido.id_pedido }}</ion-col>
+      <ion-col>{{ pedido.coste_total }}</ion-col>
       <ion-col>{{ pedido.direccion }}</ion-col>
-      <ion-col>{{ pedido.metodoPago}}</ion-col>
-      <ion-col>
-        <ion-button size="small" 
-          >Editar
-          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button
-          size="small"
-          color="danger"
-          
-          >Eliminar
-          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
+      <ion-col>{{ pedido.metodo_pago}}</ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>

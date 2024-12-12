@@ -10,12 +10,14 @@ import { PlatoListComponent } from './plato-list/plato-list.component';
 import { ClienteList } from './cliente-list/cliente-list';
 import { ClienteForm } from './cliente-form/cliente-form';
 import { PedidoList } from './pedido-list/pedido-list';
+import { PedidoForm } from './pedido-form/pedido-form';
 
 @NgModule({
   declarations: [
     PlatoFormComponent,
     PlatoListComponent,
     PedidoList,
+    PedidoForm,
     ClienteForm,
     ClienteList, // Si tienes otros componentes, decláralos aquí
   ],
@@ -29,6 +31,7 @@ import { PedidoList } from './pedido-list/pedido-list';
     PlatoFormComponent,
     PlatoListComponent,
     PedidoList,
+    PedidoForm,
     ClienteForm,
     ClienteList, // Exporta los componentes si los usas en otros módulos
   ],

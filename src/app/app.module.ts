@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PlatosModule } from './components/platos.module';
-
 import { IonicModule } from '@ionic/angular';
-
 import { AppComponent } from './app.component';
-
 import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { PlatosModule } from './components/platos.module';
 
 
 @NgModule({
